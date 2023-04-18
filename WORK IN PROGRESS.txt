@@ -9,5 +9,8 @@ MATTE:
     deployCC.sh
     deployCCUtils.sh
     deployCCHelp.sh
+
+    envVar.sh => setEnvVar.sh (for the simulation)
+              => setGlobals.sh
 SIMO:
 AURO:
