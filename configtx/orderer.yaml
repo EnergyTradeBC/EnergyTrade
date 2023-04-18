@@ -23,7 +23,7 @@ General:
         # Require server-side TLS
         Enabled: true
         # PrivateKey governs the file location of the private key of the TLS certificate.
-        PrivateKey: tls/server.key #help
+        PrivateKey: tls/server.key #helppi
         # Certificate governs the file location of the server TLS certificate.
         Certificate: tls/server.crt
         # RootCAs contains a list of additional root certificates used for verifying certificates
