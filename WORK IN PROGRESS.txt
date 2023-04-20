@@ -13,4 +13,7 @@ MATTE:
     envVar.sh => setEnvVar.sh (for the simulation)
               => setGlobals.sh
 SIMO:
+crypto-config-orderer
+compose-test-net
+
 AURO:
