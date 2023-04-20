@@ -13,7 +13,7 @@
 ################################################################################
 General:
     # Listen address: The IP on which to bind to listen.
-    ListenAddress: 127.0.0.1 #è da cambiare
+    ListenAddress: 127.0.0.1 #è da cambiare, forse 0.0.0.0?
 
     # Listen port: The port on which to bind to listen.
     ListenPort: 7050 #è da cambiare
@@ -23,7 +23,7 @@ General:
         # Require server-side TLS
         Enabled: true
         # PrivateKey governs the file location of the private key of the TLS certificate.
-        PrivateKey: tls/server.key #helppi
+        PrivateKey: tls/server.key 
         # Certificate governs the file location of the server TLS certificate.
         Certificate: tls/server.crt
         # RootCAs contains a list of additional root certificates used for verifying certificates
@@ -32,7 +32,8 @@ General:
         # available from the MSPs of each channel’s configuration.
         RootCAs:
           - tls/ca.crt
-        # Require client certificates / mutual TLS for inbound connections.
+        # Require client certificates / mutual TLS for inbound connections. Setting this value to “true” will enable mutual TLS on your network,
+        # and must be done for the entire network, not just one node.
         ClientAuthRequired: false
         # If mutual TLS is enabled, ClientRootCAs contains a list of additional root certificates
         # used for verifying certificates of client connections.
