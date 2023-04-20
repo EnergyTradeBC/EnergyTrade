@@ -10,18 +10,19 @@ OrdererOrgs:
   # ---------------------------------------------------------------------------
   # Orderer 1
   # ---------------------------------------------------------------------------
-  - Name: Orderer1
-    Domain: example.com
+  - Name: Orderer
+    Domain: orderer1.tradeenergy.com
     EnableNodeOUs: true
-     Specs:
-      - Hostname: orderer1
+    Specs:
+      - Hostname: orderer
         SANS:
           - localhost
   # ---------------------------------------------------------------------------
   # Orderer 2
+  # New orderer. Add also in compose-test-net.yaml a new container for it
   # ---------------------------------------------------------------------------
   - Name: Orderer2
-    Domain: example.com
+    Domain: orderer2.tradeenergy.com
     EnableNodeOUs: true
     Specs:
       - Hostname: orderer2
