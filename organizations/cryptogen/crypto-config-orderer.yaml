@@ -11,20 +11,37 @@ OrdererOrgs:
   # Orderer 1
   # ---------------------------------------------------------------------------
   - Name: Orderer
-    Domain: orderer1.tradeenergy.com
+    Domain: orderers.energytrade.com
     EnableNodeOUs: true
     Specs:
-      - Hostname: orderer
+      - Hostname: orderer1
         SANS:
           - localhost
+         # TLS section
+        ServerTLSCert: organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.crt
+        ServerTLSKey: organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.key
+        ClientTLSCert: organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/client.crt
+        ClientTLSKey: organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/client.key
+
   # ---------------------------------------------------------------------------
   # Orderer 2
-  # New orderer. Add also in compose-test-net.yaml a new container for it
+  # New orderer. Add also in compose-test-net.yaml a new container for it ?
   # ---------------------------------------------------------------------------
-  - Name: Orderer2
-    Domain: orderer2.tradeenergy.com
+  - Name: Orderer
+    Domain: orderers.energytrade.com  #same organization, different orderer
     EnableNodeOUs: true
     Specs:
       - Hostname: orderer2
+        SANS:
+          - localhost
+  # ---------------------------------------------------------------------------
+  # Orderer 3
+  # New orderer. Add also in compose-test-net.yaml a new container for it ?
+  # ---------------------------------------------------------------------------
+  - Name: Orderer
+    Domain: orderers.energytrade.com  #same organization, different orderer
+    EnableNodeOUs: true
+    Specs:
+      - Hostname: orderer3
         SANS:
           - localhost

@@ -6,10 +6,11 @@
 version: '3.7'
 
 volumes:
-  orderer1.tradeenergy.com:
-  orderer2.tradeenergy.com:
-  peer0.org1.example.com:
-  peer0.org2.example.com:
+  orderer1.orderers.energytrade.com:
+  orderer2.orderers.energytrade.com:
+  orderer3.orderers.energytrade.com: # associare sempre porte diverse!
+  peer0.org1.example.com: # da togliere
+  peer0.org2.example.com: # da togliere
 
 networks:
   test:
@@ -17,8 +18,8 @@ networks:
 
 services:
 
-  orderer1.tradeenergy.com:
-    container_name: orderer1.tradeenergy.com
+  orderer1.orderers.energytrade.com:
+    container_name: orderer1.orderers.energytrade.com
     image: hyperledger/fabric-orderer:latest
     labels:
       service: hyperledger-fabric
@@ -44,14 +45,14 @@ services:
       - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
       - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
       - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:7053
-      - ORDERER_OPERATIONS_LISTENADDRESS=orderer1.tradeenergy.com:9443
+      - ORDERER_OPERATIONS_LISTENADDRESS=orderer1.orderers.energytrade.com:9443
       - ORDERER_METRICS_PROVIDER=prometheus
     working_dir: /root
     command: orderer
     volumes:
-        - ../organizations/ordererOrganizations/tradeenergy.com/orderers/orderer1.tradeenergy.com/msp:/var/hyperledger/orderer/msp
-        - ../organizations/ordererOrganizations/tradeenergy.com/orderers/orderer1.tradeenergy.com/tls/:/var/hyperledger/orderer/tls
-        - orderer1.tradeenergy.com:/var/hyperledger/production/orderer
+        - ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/msp:/var/hyperledger/orderer/msp
+        - ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/:/var/hyperledger/orderer/tls
+        - orderer1.orderers.energytrade.com:/var/hyperledger/production/orderer
     ports:
       - 7050:7050
       - 7053:7053
@@ -59,16 +60,15 @@ services:
     networks:
       - test
     
-    
-  orderer2.tradeenergy.com:
-    container_name: orderer2.tradeenergy.com
+  orderer2.orderers.energytrade.com:
+    container_name: orderer2.orderers.energytrade.com
     image: hyperledger/fabric-orderer:latest
     labels:
       service: hyperledger-fabric
     environment:
       - FABRIC_LOGGING_SPEC=INFO
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
-      - ORDERER_GENERAL_LISTENPORT=7052
+      - ORDERER_GENERAL_LISTENPORT=7054
       - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
       - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
       # enabled TLS
@@ -86,21 +86,65 @@ services:
       - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
       - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
       - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
-      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:7054
-      - ORDERER_OPERATIONS_LISTENADDRESS=orderer2.tradeenergy.com:9446
+      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:9050
+      - ORDERER_OPERATIONS_LISTENADDRESS=orderer2.orderers.energytrade.com:9446
       - ORDERER_METRICS_PROVIDER=prometheus
     working_dir: /root
     command: orderer
     volumes:
-        - ../organizations/ordererOrganizations/tradeenergy.com/orderers/orderer2.tradeenergy.com/msp:/var/hyperledger/orderer/msp
-        - ../organizations/ordererOrganizations/tradeenergy.com/orderers/orderer2.tradeenergy.com/tls/:/var/hyperledger/orderer/tls
-        - orderer2.tradeenergy.com:/var/hyperledger/production/orderer
+        - ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer2.orderers.energytrade.com/msp:/var/hyperledger/orderer/msp
+        - ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer2.orderers.energytrade.com/tls/:/var/hyperledger/orderer/tls
+        - orderer2.orderers.energytrade.com:/var/hyperledger/production/orderer
     ports:
-      - 7052:7052
+      - 9050:9050
       - 7054:7054
       - 9446:9446
     networks:
-      - test
+      - test  
+
+  orderer3.orderers.energytrade.com:
+    container_name: orderer3.orderers.energytrade.com
+    image: hyperledger/fabric-orderer:latest
+    labels:
+      service: hyperledger-fabric
+    environment:
+      - FABRIC_LOGGING_SPEC=INFO
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_LISTENPORT=9057
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+      # enabled TLS
+      - ORDERER_GENERAL_TLS_ENABLED=true
+      - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+      - ORDERER_ADMIN_TLS_ENABLED=true
+      - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+      - ORDERER_ADMIN_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+      - ORDERER_ADMIN_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      - ORDERER_ADMIN_TLS_CLIENTROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+      - ORDERER_ADMIN_LISTENADDRESS=0.0.0.0:7058
+      - ORDERER_OPERATIONS_LISTENADDRESS=orderer3.orderers.energytrade.com:9448
+      - ORDERER_METRICS_PROVIDER=prometheus
+    working_dir: /root
+    command: orderer
+    volumes:
+        - ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer3.orderers.energytrade.com/msp:/var/hyperledger/orderer/msp
+        - ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer3.orderers.energytrade.com/tls/:/var/hyperledger/orderer/tls
+        - orderer3.orderers.energytrade.com:/var/hyperledger/production/orderer
+    ports:
+      - 9057:9057
+      - 7058:7058
+      - 9448:9448
+    networks:
+      - test  
+    
+
 
   peer0.org1.example.com:
     container_name: peer0.org1.example.com

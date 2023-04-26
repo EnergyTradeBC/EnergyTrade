@@ -21,15 +21,48 @@ createChannel() {
 	# Poll in case the raft leader is not set yet
 	local rc=1
 	local COUNTER=1
+	#add orderer1
 	while [ $rc -ne 0 -a $COUNTER -lt $MAX_RETRY ] ; do
 		sleep $DELAY
 		set -x
-		osnadmin channel join --channelID $CHANNEL_NAME --config-block ./channel-artifacts/${CHANNEL_NAME}.block -o localhost:7053 --ca-file "$ORDERER_CA" --client-cert "$ORDERER_ADMIN_TLS_SIGN_CERT" --client-key "$ORDERER_ADMIN_TLS_PRIVATE_KEY" >&log.txt
+		osnadmin channel join --channelID $CHANNEL_NAME --config-block ./channel-artifacts/${CHANNEL_NAME}.block -o localhost:7050 --ca-file "$ORDERER_CA" --client-cert "$ORDERER_1_TLS_SIGN_CERT" --client-key "$ORDERER_1_TLS_PRIVATE_KEY" >&log1.txt
 		res=$?
 		{ set +x; } 2>/dev/null
 		let rc=$res
 		COUNTER=$(expr $COUNTER + 1)
 	done
+	cat log1.txt
+	verifyResult $res "Channel creation failed"
+	#non so se andava ricopiato tutto il codice o solo qualche riga 
+	#add orderer2
+		while [ $rc -ne 0 -a $COUNTER -lt $MAX_RETRY ] ; do
+		sleep $DELAY
+		set -x
+		osnadmin channel join --channelID $CHANNEL_NAME --config-block ./channel-artifacts/${CHANNEL_NAME}.block -o $NETWORK_ADDRESS_2 \
+		--ca-file "$ORDERER_CA" --client-cert "$ORDERER_2_TLS_SIGN_CERT" --client-key "$ORDERER_2_TLS_PRIVATE_KEY" >&log2.txt
+		res=$?
+		{ set +x; } 2>/dev/null
+		let rc=$res
+		COUNTER=$(expr $COUNTER + 1)
+	done
+	cat log2.txt
+	verifyResult $res "Channel creation failed"
+	#add orderer3
+	while [ $rc -ne 0 -a $COUNTER -lt $MAX_RETRY ] ; do
+		sleep $DELAY
+		set -x
+		osnadmin channel join --channelID $CHANNEL_NAME --config-block ./channel-artifacts/${CHANNEL_NAME}.block -o $NETWORK_ADDRESS_3 \
+		--ca-file "$ORDERER_CA" --client-cert "$ORDERER_3_TLS_SIGN_CERT" --client-key "$ORDERER_3_TLS_PRIVATE_KEY" >&log3.txt
+		res=$?
+		{ set +x; } 2>/dev/null
+		let rc=$res
+		COUNTER=$(expr $COUNTER + 1)
+	done
+	cat log3.txt
+	verifyResult $res "Channel creation failed"
+
+
+
 	cat log.txt
 	verifyResult $res "Channel creation failed"
 }

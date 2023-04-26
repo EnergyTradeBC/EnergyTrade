@@ -171,6 +171,7 @@ function createOrgs() {
 
     infoln "Creating Orderer Org Identities"
 
+  #Togliere parte prima che riguarda le singole organizzazioni, tenere questa che riguarda gli orderers
     set -x
     cryptogen generate --config=./organizations/cryptogen/crypto-config-orderer.yaml --output="organizations"
     res=$?
@@ -181,7 +182,7 @@ function createOrgs() {
 
   fi
 
-  # Create crypto material using Fabric CA
+  # Create crypto material using Fabric CA     TOGLIERE
   if [ "$CRYPTO" == "Certificate Authorities" ]; then
     infoln "Generating certificates using Fabric CA"
     ${CONTAINER_CLI_COMPOSE} -f compose/$COMPOSE_FILE_CA -f compose/$CONTAINER_CLI/${CONTAINER_CLI}-$COMPOSE_FILE_CA up -d 2>&1
@@ -255,9 +256,9 @@ function networkUp() {
   if [ "${DATABASE}" == "couchdb" ]; then
     COMPOSE_FILES="${COMPOSE_FILES} -f compose/${COMPOSE_FILE_COUCH} -f compose/${CONTAINER_CLI}/${CONTAINER_CLI}-${COMPOSE_FILE_COUCH}"
   fi
-
+  # crea i docker da compose-test-network (passato come COMPOSE_FILE_BASE)
   DOCKER_SOCK="${DOCKER_SOCK}" ${CONTAINER_CLI_COMPOSE} ${COMPOSE_FILES} up -d 2>&1
-
+  #print per vedere i contenitori che girano
   $CONTAINER_CLI ps -a
   if [ $? -ne 0 ]; then
     fatalln "Unable to start network"

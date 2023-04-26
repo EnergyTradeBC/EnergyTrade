@@ -1,0 +1,2 @@
+Error: Post "https://localhost:7050/participation/v1/channels": x509: certificate signed by unknown authority (possibly because of "x509: ECDSA verification failure" while trying to verify candidate authority certificate "tlsca.orderers.energytrade.com")
+
