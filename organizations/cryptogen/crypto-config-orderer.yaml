@@ -18,10 +18,9 @@ OrdererOrgs:
         SANS:
           - localhost
          # TLS section
-        ServerTLSCert: organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.crt
-        ServerTLSKey: organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.key
-        ClientTLSCert: organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/client.crt
-        ClientTLSKey: organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/client.key
+        #ServerTLSCert: organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.crt
+        #ServerTLSKey: organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.key
+        
 
   # ---------------------------------------------------------------------------
   # Orderer 2

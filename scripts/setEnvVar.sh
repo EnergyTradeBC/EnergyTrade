@@ -6,9 +6,9 @@ export CORE_PEER_TLS_ENABLED=true
 
 export ORDERER_CA=${PWD}/organizations/ordererOrganizations/orderers.energytrade.com/tlsca/tlsca.orderers.energytrade.com-cert.pem
 
-export PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
-export PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem
-export PEER0_ORG3_CA=${PWD}/organizations/peerOrganizations/org3.example.com/tlsca/tlsca.org3.example.com-cert.pem
+export PEER0_ORG1_CA=${PWD}/organizations/peerOrganizations/org1.energytrade.com/tlsca/tlsca.org1.energytrade.com-cert.pem
+export PEER0_ORG2_CA=${PWD}/organizations/peerOrganizations/org2.energytrade.com/tlsca/tlsca.org2.energytrade.com-cert.pem
+export PEER0_ORG3_CA=${PWD}/organizations/peerOrganizations/org3.energytrade.com/tlsca/tlsca.org3.energytrade.com-cert.pem
 
 ...
 

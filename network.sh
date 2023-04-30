@@ -341,7 +341,7 @@ function networkDown() {
   # Don't remove the generated artifacts -- note, the ledgers are always removed
   if [ "$MODE" != "restart" ]; then
     # Bring down the network, deleting the volumes
-    ${CONTAINER_CLI} volume rm docker_orderer.example.com docker_peer0.org1.example.com docker_peer0.org2.example.com
+    ${CONTAINER_CLI} volume rm docker_orderer.energytrade.com docker_peer0.org1.energytrade.com docker_peer0.org2.energytrade.com
     #Cleanup the chaincode containers
     clearContainers
     #Cleanup images

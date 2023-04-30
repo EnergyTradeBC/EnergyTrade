@@ -13,7 +13,7 @@
 ################################################################################
 General:
     # Listen address: The IP on which to bind to listen.
-    ListenAddress: 127.0.0.1 #è da cambiare, forse 0.0.0.0?
+    ListenAddress: 0.0.0.0 #è da cambiare, forse 0.0.0.0?
 
     # Listen port: The port on which to bind to listen.
     ListenPort: 7050 #è da cambiare
@@ -23,18 +23,18 @@ General:
         # Require server-side TLS
         Enabled: true
         # PrivateKey governs the file location of the private key of the TLS certificate.
-        PrivateKey: tls/server.key 
+        PrivateKey: /home/bchain/fabric-samples/ENERGY-TRADE/organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.key
         # Certificate governs the file location of the server TLS certificate.
-        Certificate: tls/server.crt
+        Certificate: /home/bchain/fabric-samples/ENERGY-TRADE/organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.crt
         # RootCAs contains a list of additional root certificates used for verifying certificates
         # of other orderer nodes during outbound connections.
         # It is not required to be set, but can be used to augment the set of TLS CA certificates
         # available from the MSPs of each channel’s configuration.
         RootCAs:
-          - tls/ca.crt
+          - /home/bchain/fabric-samples/ENERGY-TRADE/organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/ca.crt
         # Require client certificates / mutual TLS for inbound connections. Setting this value to “true” will enable mutual TLS on your network,
         # and must be done for the entire network, not just one node.
-        ClientAuthRequired: false
+        ClientAuthRequired: true
         # If mutual TLS is enabled, ClientRootCAs contains a list of additional root certificates
         # used for verifying certificates of client connections.
         # It is not required to be set, but can be used to augment the set of TLS CA certificates

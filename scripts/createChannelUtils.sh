@@ -16,7 +16,7 @@ createChannelGenesisBlock() {
 # createChannel CHANNEL_NAME DELAY MAX_RETRY
 createChannel() {
   export PATH=${PWD}/../bin:$PATH
-	export FABRIC_CFG_PATH=$PWD/../config/
+	export FABRIC_CFG_PATH=${PWD}/configtx    #$PWD/../config/
 	setGlobals 1
 	# Poll in case the raft leader is not set yet
 	local rc=1

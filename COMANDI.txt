@@ -1,19 +1,10 @@
-LORE:
-    createChannel.sh
-    createChannelUtils.sh
-    createChannelHelp.sh
-    addOrg.sh
-    addOrgUtils.sh
-    addOrgHelp.sh
-MATTE:
-    deployCC.sh
-    deployCCUtils.sh
-    deployCCHelp.sh
+cd /home/bchain/fabric-samples/ENERGY-TRADE
+./network.sh up
+./scripts/createChannel.sh genesis
+./scripts/createChannel.sh create
 
-    envVar.sh => setEnvVar.sh (for the simulation)
-              => setGlobals.sh
-SIMO:
-    crypto-config-orderer
-    compose-test-net
+./network.sh down
 
-AURO:
+
+./scripts/addOrg.sh files 9 11051 11054
+./scripts/addOrg.sh add 9 11051 11052

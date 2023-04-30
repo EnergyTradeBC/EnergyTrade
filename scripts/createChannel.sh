@@ -24,7 +24,7 @@ infoln "Using ${CONTAINER_CLI} and ${CONTAINER_CLI_COMPOSE}"
 
 CHANNEL_NAME="CER"
 DELAY="3"
-MAX_RETRY="2"  #5!!!
+MAX_RETRY="3"  #5!!!
 VERBOSE="false"
 
 while [[ $# -ge 1 ]] ; do

@@ -54,7 +54,7 @@ Organizations:
         # ID to load the MSP definition as
         ID: Org1MSP
 
-        MSPDir: ../organizations/peerOrganizations/org1.example.com/msp
+        MSPDir: ../organizations/peerOrganizations/org1.energytrade.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -81,7 +81,7 @@ Organizations:
         # ID to load the MSP definition as
         ID: Org2MSP
 
-        MSPDir: ../organizations/peerOrganizations/org2.example.com/msp
+        MSPDir: ../organizations/peerOrganizations/org2.energytrade.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -218,15 +218,15 @@ Orderer: &OrdererDefaults
      Consenters:
        - Host: orderer1.orderers.energytrade.com
          Port: 7050
-         ClientTLSCert: ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/client.crt
+         ClientTLSCert: ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.crt
          ServerTLSCert: ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.crt
        - Host: orderer2.orderers.energytrade.com
          Port: 7054
-         ClientTLSCert: ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer2.orderers.energytrade.com/tls/client.crt
+         ClientTLSCert: ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer2.orderers.energytrade.com/tls/server.crt
          ServerTLSCert: ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer2.orderers.energytrade.com/tls/server.crt
        - Host: orderer3.orderers.energytrade.com
          Port: 9057
-         ClientTLSCert: ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer3.orderers.energytrade.com/tls/client.crt
+         ClientTLSCert: ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer3.orderers.energytrade.com/tls/server.crt
          ServerTLSCert: ../organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer3.orderers.energytrade.com/tls/server.crt
 
     # Batch Timeout: The amount of time to wait before creating a batch
