@@ -16,7 +16,7 @@ createChannelGenesisBlock() {
 # createChannel CHANNEL_NAME DELAY MAX_RETRY
 createChannel() {
   export PATH=${PWD}/../bin:$PATH
-	export FABRIC_CFG_PATH=${PWD}/configtx    #$PWD/../config/
+	#export FABRIC_CFG_PATH=${PWD}/configtx    #$PWD/../config/
 	setGlobals 1
 	# Poll in case the raft leader is not set yet
 	local rc=1
@@ -25,7 +25,7 @@ createChannel() {
 	while [ $rc -ne 0 -a $COUNTER -lt $MAX_RETRY ] ; do
 		sleep $DELAY
 		set -x
-		osnadmin channel join --channelID $CHANNEL_NAME --config-block ./channel-artifacts/${CHANNEL_NAME}.block -o localhost:7050 --ca-file "$ORDERER_CA" --client-cert "$ORDERER_1_TLS_SIGN_CERT" --client-key "$ORDERER_1_TLS_PRIVATE_KEY" >&log1.txt
+		osnadmin channel join --channelID $CHANNEL_NAME --config-block ./channel-artifacts/${CHANNEL_NAME}.block -o localhost:7053 --ca-file "$ORDERER_CA" --client-cert "$ORDERER_1_TLS_SIGN_CERT" --client-key "$ORDERER_1_TLS_PRIVATE_KEY" >&log1.txt
 		res=$?
 		{ set +x; } 2>/dev/null
 		let rc=$res
