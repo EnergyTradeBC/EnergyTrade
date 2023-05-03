@@ -32,9 +32,10 @@ General:
         # available from the MSPs of each channel’s configuration.
         RootCAs:
           - /home/bchain/fabric-samples/ENERGY-TRADE/organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/ca.crt
+          - /home/bchain/fabric-samples/ENERGY-TRADE/organizations/ordererOrganizations/orderers.energytrade.com/msp/tlscacerts/tlsca.orderers.energytrade.com-cert.pem
         # Require client certificates / mutual TLS for inbound connections. Setting this value to “true” will enable mutual TLS on your network,
         # and must be done for the entire network, not just one node.
-        ClientAuthRequired: true
+        ClientAuthRequired: false
         # If mutual TLS is enabled, ClientRootCAs contains a list of additional root certificates
         # used for verifying certificates of client connections.
         # It is not required to be set, but can be used to augment the set of TLS CA certificates

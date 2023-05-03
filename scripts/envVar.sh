@@ -19,15 +19,15 @@ export PEER0_ORG3_CA=${PWD}/organizations/peerOrganizations/org3.energytrade.com
 #export ORDERER_ADMIN_TLS_SIGN_CERT=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.energytrade.com/tls/server.crt
 #export ORDERER_ADMIN_TLS_PRIVATE_KEY=${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.energytrade.com/tls/server.key
 
-export NETWORK_ADDRESS_1=orderer1.orderers.energytrade.com:7050   
+#export NETWORK_ADDRESS_1=orderer1.orderers.energytrade.com:7050   
 export ORDERER_1_TLS_SIGN_CERT=${PWD}/organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.crt
 export ORDERER_1_TLS_PRIVATE_KEY=${PWD}/organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.key
 
-export NETWORK_ADDRESS_2=orderer2.orderers.energytrade.com:7054
+#export NETWORK_ADDRESS_2=orderer2.orderers.energytrade.com:7054
 export ORDERER_2_TLS_SIGN_CERT=${PWD}/organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer2.orderers.energytrade.com/tls/server.crt
 export ORDERER_2_TLS_PRIVATE_KEY=${PWD}/organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer2.orderers.energytrade.com/tls/server.key
 
-export NETWORK_ADDRESS_3=orderer3.orderers.energytrade.com:9057
+#export NETWORK_ADDRESS_3=orderer3.orderers.energytrade.com:9057
 export ORDERER_3_TLS_SIGN_CERT=${PWD}/organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer3.orderers.energytrade.com/tls/server.crt
 export ORDERER_3_TLS_PRIVATE_KEY=${PWD}/organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer3.orderers.energytrade.com/tls/server.key
 # Set environment variables for the peer org

@@ -235,6 +235,7 @@ services:
       - GOPATH=/opt/gopath
       - FABRIC_LOGGING_SPEC=INFO
       - FABRIC_CFG_PATH=/etc/hyperledger/peercfg
+      - CORE_PEER_TLS_ENABLED=true
       #- FABRIC_LOGGING_SPEC=DEBUG
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: /bin/bash

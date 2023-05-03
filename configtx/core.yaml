@@ -300,11 +300,11 @@ peer:
         # Private key used for TLS when making client connections.
         # If not set, peer.tls.key.file will be used instead
         clientKey:
-            file:
+            file: home/bchain/fabric-samples/ENERGY-TRADE/organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.key
         # X.509 certificate used for TLS when making client connections.
         # If not set, peer.tls.cert.file will be used instead
         clientCert:
-            file:
+            file: /home/bchain/fabric-samples/ENERGY-TRADE/organizations/ordererOrganizations/orderers.energytrade.com/orderers/orderer1.orderers.energytrade.com/tls/server.crt
 
     # Authentication contains configuration parameters related to authenticating
     # client messages

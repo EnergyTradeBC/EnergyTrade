@@ -1,7 +1,7 @@
 # createChannelGenesisBlock CHANNEL_NAME
 createChannelGenesisBlock() {
   export PATH=${PWD}/../bin:$PATH
-	export FABRIC_CFG_PATH=${PWD}/configtx
+	export FABRIC_CFG_PATH=${PWD}/configtx/ 
 	which configtxgen
 	if [ "$?" -ne 0 ]; then
 		fatalln "configtxgen tool not found."
@@ -15,9 +15,10 @@ createChannelGenesisBlock() {
 
 # createChannel CHANNEL_NAME DELAY MAX_RETRY
 createChannel() {
+
   export PATH=${PWD}/../bin:$PATH
-	#export FABRIC_CFG_PATH=${PWD}/configtx    #$PWD/../config/
-	setGlobals 1
+	export FABRIC_CFG_PATH=${PWD}/configtx/    #$PWD/../config/
+	#setGlobals 1
 	# Poll in case the raft leader is not set yet
 	local rc=1
 	local COUNTER=1
