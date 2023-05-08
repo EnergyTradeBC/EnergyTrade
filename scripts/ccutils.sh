@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # installChaincode PEER ORG
 function installChaincode() {
   ORG=$1

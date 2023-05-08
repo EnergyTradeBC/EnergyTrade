@@ -1,6 +1,6 @@
 # createChannelGenesisBlock CHANNEL_NAME
 createChannelGenesisBlock() {
-  export PATH=${PWD}/../bin:$PATH
+  	export PATH=${PWD}/../bin:$PATH
 	export FABRIC_CFG_PATH=${PWD}/configtx
 	which configtxgen
 	if [ "$?" -ne 0 ]; then
@@ -10,14 +10,14 @@ createChannelGenesisBlock() {
 	configtxgen -profile TwoOrgsApplicationGenesis -outputBlock ./channel-artifacts/${CHANNEL_NAME}.block -channelID $CHANNEL_NAME
 	res=$?
 	{ set +x; } 2>/dev/null
-  verifyResult $res "Failed to generate channel configuration transaction..."
+  	verifyResult $res "Failed to generate channel configuration transaction..."
 }
 
 # createChannel CHANNEL_NAME DELAY MAX_RETRY
 createChannel() {
-  export PATH=${PWD}/../bin:$PATH
+  	export PATH=${PWD}/../bin:$PATH
 	export FABRIC_CFG_PATH=$PWD/../config/
-	setGlobals 1
+	#setGlobals 1
 	# Poll in case the raft leader is not set yet
 	local rc=1
 	local COUNTER=1
@@ -36,10 +36,10 @@ createChannel() {
 
 # joinChannel CHANNEL_NAME DELAY MAX_RETRY ORG
 joinChannel() {
-  export PATH=${PWD}/../bin:$PATH
-  export FABRIC_CFG_PATH=$PWD/../config/
-  BLOCKFILE="./channel-artifacts/${CHANNEL_NAME}.block"
-  setGlobals $ORG
+  	export PATH=${PWD}/../bin:$PATH
+  	export FABRIC_CFG_PATH=$PWD/../config/
+  	BLOCKFILE="./channel-artifacts/${CHANNEL_NAME}.block"
+  	setGlobals $ORG
 	local rc=1
 	local COUNTER=1
 	## Sometimes Join takes time, hence retry
@@ -58,5 +58,5 @@ joinChannel() {
 
 # setAnchorPeer CHANNEL_NAME ORG
 setAnchorPeer() {
-  ${CONTAINER_CLI} exec cli ./scripts/setAnchorPeer.sh $ORG $CHANNEL_NAME 
+  	${CONTAINER_CLI} exec cli ./scripts/setAnchorPeer.sh $ORG $CHANNEL_NAME 
 }

@@ -18,11 +18,21 @@ else
   	shift
 fi
 
+if [ "$MODE" == "join" ]; then
+	if [[ $# -lt 1 ]] ; then
+		createChannelHelp $MODE
+		exit 0
+	else
+		ORG=$1
+		shift
+	fi
+fi
+
 CONTAINER_CLI="docker"
 CONTAINER_CLI_COMPOSE="${CONTAINER_CLI}-compose"
 infoln "Using ${CONTAINER_CLI} and ${CONTAINER_CLI_COMPOSE}"
 
-CHANNEL_NAME="CER"
+CHANNEL_NAME="cer"
 DELAY="3"
 MAX_RETRY="5"
 VERBOSE="false"
@@ -79,7 +89,7 @@ elif [ "$MODE" == "create" ]; then
 	createChannel
   	successln "Channel '$CHANNEL_NAME' created"
 elif [ "$MODE" == "join" ]; then
-  	infoln "Joining org1 peer to the channel..."
+  	infoln "Joining ${ORG} peer to the channel..."
   	joinChannel
 elif [ "$MODE" == "anchor" ]; then
   	infoln "Setting anchor peer for org1..."

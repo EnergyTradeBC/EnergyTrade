@@ -31,7 +31,7 @@ function createChannelHelp() {
     println "      -h - Print this message"
   elif [ "$USAGE" == "join" ]; then
     println "Usage: "
-    println "  createChannel.sh ${C_GREEN}join${C_RESET} [Flags]"
+    println "  createChannel.sh ${C_GREEN}join <Org>${C_RESET} [Flags]"
     println
     println "    Flags:"
     println "      -c <channel name> - Name of channel to create (defaults to \"mychannel\")"
